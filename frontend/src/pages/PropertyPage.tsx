@@ -30,9 +30,7 @@ const PropertyPage: React.FC = () => {
       propertyId === "2B-N1-A-29-Shoreditch-Heights"
         ? "2B N1 A - 29 Shoreditch Heights"
         : "Studio 1A - Central London",
-    description: `Cet appartement lumineux et spacieux d'une chambre se trouve rue Championnet à Paris. Il est parfait pour tous les profils – que vous soyez seul, en couple ou en télétravail.
-
-L'appartement comprend un grand salon, une chambre confortable, une cuisine et une salle de bain. Il est situé dans un quart...`,
+    description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mollis lorem eget sem imperdiet sollicitudin. Integer tincidunt odio at mattis blandit. Nulla ac leo eu diam sagittis faucibus eu a purus. Vestibulum tristique ac nisi sit amet dictum. In dictum nibh eget dui ultricies malesuada. Quisque in commodo est. Donec vestibulum suscipit risus a faucibus....`,
     amenities: [
       { icon: Tv, name: "Cable TV" },
       { icon: User, name: "Internet" },

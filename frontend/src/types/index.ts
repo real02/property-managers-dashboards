@@ -82,6 +82,24 @@ export interface AmenityItem {
   name: string;
 }
 
+export interface PropertyPerformance {
+  propertyId: string;
+  propertyName: string;
+  totalReviews: number;
+  avgRating: number;
+  recentAvgRating: number;
+  trend: "up" | "down" | "stable";
+  sentimentCounts: Record<string, number>;
+  categoryAvgs: {
+    cleanliness: number;
+    communication: number;
+    house_rules: number;
+  };
+  channelDistribution: Record<string, number>;
+  issues: string[];
+  lastReviewDate: string;
+}
+
 export interface Analytics {
   totalReviews: number;
   publicReviews: number;

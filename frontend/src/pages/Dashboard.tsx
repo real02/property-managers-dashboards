@@ -1,4 +1,5 @@
 import React, { useMemo } from "react";
+import PerPropertyPerformanceSection from "../components/dashboard/PerPropertyPerformance";
 import { useAuth } from "../contexts/AuthContext";
 import { useReviews } from "../hooks/useReviews";
 import { Analytics } from "../types";
@@ -425,6 +426,7 @@ const Dashboard: React.FC = () => {
             ))}
           </ul>
         </div>
+        <PerPropertyPerformanceSection reviews={reviews} />
       </div>
     </div>
   );
