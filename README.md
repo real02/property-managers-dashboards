@@ -2,11 +2,14 @@
 
 A modern, intuitive dashboard system for managing and displaying guest reviews across Flex Living properties. This application integrates with the Hostaway API to fetch review data, provides managers with tools to curate reviews, and displays approved reviews on property pages.
 
+Demo can be seen here: <https://vimeo.com/1114625658?share=copy>
+
 ## Quick Start
 
 ### Prerequisites
 
 - Node.js 18+ and npm
+- Vite
 - Git
 
 ### Local Setup Instructions
@@ -22,10 +25,10 @@ A modern, intuitive dashboard system for managing and displaying guest reviews a
 
    ```bash
    # Install backend dependencies
-   npm install
+   cd ./backend && npm install
 
-   # Install frontend dependencies (if separate)
-   cd client && npm install && cd ..
+   # Install frontend dependencies
+   cd ./frontend && npm install
    ```
 
 3. **Environment Setup**
@@ -33,8 +36,8 @@ A modern, intuitive dashboard system for managing and displaying guest reviews a
 
    ```env
    # Hostaway API Configuration
-   HOSTAWAY_API_KEY=f94377ebbbb479490bb3ec364649168dc443dda2e4830facaf5de2e74ccc9152
-   HOSTAWAY_ACCOUNT_ID=61148
+   HOSTAWAY_API_KEY={insert-your-api-key-here}
+   HOSTAWAY_ACCOUNT_ID={insert-your-account-id-here}
    HOSTAWAY_BASE_URL=https://api.hostaway.com/v1
 
    # Google Places API (optional)
@@ -77,30 +80,25 @@ A modern, intuitive dashboard system for managing and displaying guest reviews a
 - **Node.js** with **Express.js** - API server and routing
 - **TypeScript** - Type safety and better developer experience
 - **SQLite** - Local database for review storage and curation state
-- **Prisma** - Database ORM and migrations
 - **Axios** - HTTP client for external API calls
 
 ### Frontend
 
 - **React 18** with **TypeScript** - Component-based UI
-- **Next.js 14** - Full-stack React framework with SSR/SSG
 - **Tailwind CSS** - Utility-first CSS framework
-- **React Query (TanStack Query)** - Server state management
 - **React Hook Form** - Form handling and validation
 - **Lucide React** - Icon library
 
 ### Development Tools
 
 - **ESLint** + **Prettier** - Code formatting and linting
-- **Husky** - Git hooks for code quality
 - **Jest** - Unit testing framework
-- **Playwright** - End-to-end testing
 
 ## Architecture & Design Decisions
 
 ### 1. API-First Approach
 
-Following the assessment requirements, we implemented a robust API layer that serves as the backbone:
+Following the assessment requirements, I implemented a robust API layer that serves as the backbone:
 
 - **GET `/api/reviews/hostaway`** - Fetches and normalizes review data
 - **POST `/api/reviews/approve`** - Manager approval workflow
@@ -174,31 +172,8 @@ Reviews are seamlessly integrated into existing property pages:
 
 **Key Behaviors:**
 
-- **Automatic Polling** - Syncs new reviews every 30 minutes
 - **Duplicate Prevention** - Uses review ID and hash comparison
 - **Error Resilience** - Graceful handling of API downtime
-- **Rate Limiting** - Respects Hostaway API limits (100 requests/hour)
-
-### Google Reviews Integration
-
-```typescript
-// GET /api/reviews/google/:placeId
-{
-  "success": true,
-  "data": {
-    "reviews": GoogleReview[],
-    "placeDetails": PlaceDetails,
-    "averageRating": 4.6
-  }
-}
-```
-
-**Implementation Notes:**
-
-- **Places API Integration** - Fetches reviews using Place ID
-- **Review Limitations** - Google provides only 5 most recent reviews
-- **Refresh Strategy** - Updates every 24 hours due to API constraints
-- **Fallback Handling** - Continues operation if Google integration fails
 
 ## Key Features
 
@@ -234,9 +209,6 @@ npm test
 
 # Run tests with coverage
 npm run test:coverage
-
-# Run E2E tests
-npm run test:e2e
 ```
 
 **Test Coverage:**
